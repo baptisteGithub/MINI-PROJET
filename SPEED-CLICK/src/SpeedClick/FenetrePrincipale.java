@@ -155,9 +155,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 255, 255));
         setBounds(new java.awt.Rectangle(450, 220, 500, 500));
         setSize(new java.awt.Dimension(500, 300));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        GrilleBoutons.setBackground(new java.awt.Color(255, 255, 0));
         GrilleBoutons.setPreferredSize(new java.awt.Dimension(400, 400));
 
         javax.swing.GroupLayout GrilleBoutonsLayout = new javax.swing.GroupLayout(GrilleBoutons);
@@ -171,17 +169,43 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 332, Short.MAX_VALUE)
         );
 
-        getContentPane().add(GrilleBoutons, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 6, 341, 332));
-
-        labelChrono.setBackground(new java.awt.Color(255, 0, 0));
         labelChrono.setFont(new java.awt.Font("Felix Titling", 1, 12)); // NOI18N
         labelChrono.setText("labelChrono");
-        getContentPane().add(labelChrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 56, 242, 127));
 
-        labelScore.setBackground(new java.awt.Color(0, 204, 51));
         labelScore.setFont(new java.awt.Font("Algerian", 0, 12)); // NOI18N
         labelScore.setText("labelScore");
-        getContentPane().add(labelScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 231, 123, 71));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(112, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
