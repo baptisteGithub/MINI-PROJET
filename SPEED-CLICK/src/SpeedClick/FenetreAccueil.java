@@ -4,18 +4,68 @@
  */
 package SpeedClick;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bapti
  */
 public class FenetreAccueil extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form FenetreAccueil
      */
     public FenetreAccueil() {
         initComponents();
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 500);
         setLocationRelativeTo(null);
+
+        // Crée un JLayeredPane pour gérer les couches
+        JLayeredPane layeredPane = new JLayeredPane();
+        setContentPane(layeredPane);
+
+        // Ajoute l'image de fond en tant que JLabel
+        ImageIcon imageFond = new ImageIcon("C:\\Users\\bapti\\Documents2\\2A\\CPO_MINI_PROJET2\\SPEED-CLICK\\src\\SpeedClick\\Image1.jpg");
+        Image image = imageFond.getImage().getScaledInstance(800, 500, Image.SCALE_SMOOTH);
+        ImageIcon imageFondScaled = new ImageIcon(image);
+        JLabel labelFond = new JLabel(imageFond);
+        labelFond.setBounds(0, 0, 800, 500);
+        layeredPane.add(labelFond, Integer.valueOf(0));  // Ajoute à la couche de fond
+
+        // Ajoute un JLabel pour le texte
+        JLabel labelTexte = new JLabel("BIENVENUE SUR SPEEDY GONZALEZ CLICK");
+        labelTexte.setForeground(Color.RED);  // Couleur du texte
+        labelTexte.setFont(new Font("Arial", Font.BOLD, 24));  // Style et taille de police
+        labelTexte.setBounds(50, 50, 600, 50);  // Position et taille du label
+        layeredPane.add(labelTexte, Integer.valueOf(1));  // Ajoute à la couche au-dessus du fond
+
+        // Ajoute un bouton cliquable
+        JButton bouton = new JButton("Cliquez-moi !");
+        bouton.setBounds(100, 100, 150, 30);
+        layeredPane.add(bouton, Integer.valueOf(2));  // Ajoute à la couche au-dessus du texte
+        bouton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Le code ici sera exécuté lorsque le bouton est cliqué
+                new FenetrePrincipale().setVisible(true);
+
+            }
+        });
+
+        setVisible(true);
+
     }
 
     /**
@@ -27,56 +77,14 @@ public class FenetreAccueil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(450, 220, 500, 500));
         setPreferredSize(new java.awt.Dimension(730, 415));
         setSize(new java.awt.Dimension(500, 300));
-
-        jButton1.setText("COMMENCER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel1.setText("BIENVENUE SUR SPEEDY GONZALEZ CLICK");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
-        );
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        new FenetrePrincipale().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +122,5 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
