@@ -23,7 +23,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     private ArrayList<JButton> boutons = new ArrayList<>();
     private Timer timer;
-    private int secondsLeft = 20;
+    private int secondsLeft = 10;
+    private int score = 0;
  
     /**
      * Creates new form GrilleBoutons
@@ -33,9 +34,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         int nbLignes = 5;
         int nbColonnes = 5;
         GrilleBoutons.setLayout(new GridLayout(nbLignes, nbColonnes));
+        
+        
         // Affichage initial du chronomètre
         labelChrono.setText("Temps restant : " + secondsLeft + " secondes");
         add(labelChrono, BorderLayout.EAST);
+        
+        // Affichage initial du score
+        labelScore.setText("Score : " + score);
+        add(labelScore, BorderLayout.SOUTH);
         
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
@@ -50,9 +57,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         if (timer == null) {
                             lancerChronometre();
                         }
-                        // Rétablit la couleur normale du bouton cliqué
+                        
+                        
+                        
                         JButton source = (JButton) e.getSource();
+                        
+                        
+                        // Vérifie si le bouton cliqué est vert
+                        if (source.getBackground() == Color.GREEN) {
+                            incrementerScore();
+                        } else {
+                            decrementerScore();
+                        }
+                        
+                        // Rétablit la couleur normale du bouton cliqué
                         source.setBackground(null);
+                        
+                        
 
                         // Choisi aléatoirement un autre bouton pour le colorier en vert
                         colorierBoutonAleatoire();
@@ -106,6 +127,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             bouton.setEnabled(false);
         }
     }
+    
+    private void incrementerScore() {
+        score++;
+        labelScore.setText("Score : " + score);
+    }
+
+    private void decrementerScore() {
+        score--;
+        labelScore.setText("Score : " + score);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,6 +149,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         GrilleBoutons = new javax.swing.JPanel();
         labelChrono = new javax.swing.JLabel();
+        labelScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -140,6 +172,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         labelChrono.setFont(new java.awt.Font("Felix Titling", 1, 12)); // NOI18N
         labelChrono.setText("labelChrono");
 
+        labelScore.setFont(new java.awt.Font("Algerian", 0, 12)); // NOI18N
+        labelScore.setText("labelScore");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,9 +182,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +201,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
@@ -206,5 +249,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel GrilleBoutons;
     private javax.swing.JLabel labelChrono;
+    private javax.swing.JLabel labelScore;
     // End of variables declaration//GEN-END:variables
 }
