@@ -2,10 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package lachevauchefantastique;
+package SpeedClick;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  *
@@ -13,22 +21,90 @@ import javax.swing.JButton;
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
 
+    private ArrayList<JButton> boutons = new ArrayList<>();
+    private Timer timer;
+    private int secondsLeft = 20;
+ 
     /**
      * Creates new form GrilleBoutons
      */
     public FenetrePrincipale() {
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
+        int nbLignes = 5;
+        int nbColonnes = 5;
         GrilleBoutons.setLayout(new GridLayout(nbLignes, nbColonnes));
-
+        // Affichage initial du chronomètre
+        labelChrono.setText("Temps restant : " + secondsLeft + " secondes");
+        add(labelChrono, BorderLayout.EAST);
+        
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                JButton bouton_cellule = new JButton(); // création d'un bouton
-                GrilleBoutons.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+                JButton bouton_cellule = new JButton();
+                boutons.add(bouton_cellule);
+                GrilleBoutons.add(bouton_cellule);
+
+                bouton_cellule.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Lance le chronomètre lors du premier clic
+                        if (timer == null) {
+                            lancerChronometre();
+                        }
+                        // Rétablit la couleur normale du bouton cliqué
+                        JButton source = (JButton) e.getSource();
+                        source.setBackground(null);
+
+                        // Choisi aléatoirement un autre bouton pour le colorier en vert
+                        colorierBoutonAleatoire();
+                    }
+                });
             }
         }
 
+        // Initialisation du premier bouton vert
+        colorierBoutonAleatoire();
+    }
+
+    private void lancerChronometre() {
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                secondsLeft--;
+
+                // Met à jour l'affichage du chronomètre
+                // (Assurez-vous d'avoir un JLabel appelé "labelChrono" dans votre interface graphique)
+                labelChrono.setText("Temps restant : " + secondsLeft + " secondes");
+
+                // Vérifie si le temps est écoulé
+                if (secondsLeft <= 0) {
+                    // Arrête le chronomètre et désactive les boutons
+                    timer.stop();
+                    desactiverBoutons();
+                }
+            }
+        });
+
+        // Lance le chronomètre
+        timer.start();
+    }
+
+    private void colorierBoutonAleatoire() {
+        // Rétablit la couleur normale de tous les boutons
+        for (JButton bouton : boutons) {
+            bouton.setBackground(null);
+        }
+
+        // Choisi aléatoirement un bouton et le colorie en vert
+        Random rand = new Random();
+        int index = rand.nextInt(boutons.size());
+        JButton boutonVert = boutons.get(index);
+        boutonVert.setBackground(Color.GREEN);
+    }
+    private void desactiverBoutons() {
+        // Désactive tous les boutons
+        for (JButton bouton : boutons) {
+            bouton.setEnabled(false);
+        }
     }
 
     /**
@@ -41,11 +117,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         GrilleBoutons = new javax.swing.JPanel();
+        labelChrono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
         setBounds(new java.awt.Rectangle(450, 220, 500, 500));
-        setPreferredSize(new java.awt.Dimension(700, 450));
         setSize(new java.awt.Dimension(500, 300));
 
         GrilleBoutons.setPreferredSize(new java.awt.Dimension(400, 400));
@@ -61,6 +137,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 332, Short.MAX_VALUE)
         );
 
+        labelChrono.setFont(new java.awt.Font("Felix Titling", 1, 12)); // NOI18N
+        labelChrono.setText("labelChrono");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,14 +147,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,5 +205,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel GrilleBoutons;
+    private javax.swing.JLabel labelChrono;
     // End of variables declaration//GEN-END:variables
 }
