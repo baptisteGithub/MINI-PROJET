@@ -53,10 +53,12 @@
                               <Component id="boutonNouvellePartie" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="boutonRetourAccueil" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="boutonAfficherScores" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="labelChrono" min="-2" pref="225" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="102" max="32767" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -78,6 +80,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="boutonNouvellePartie" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
                   <Component id="boutonRetourAccueil" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
+                  <Component id="boutonAfficherScores" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
@@ -133,6 +136,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="boutonRetourAccueil">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="boutonAfficherScores">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>

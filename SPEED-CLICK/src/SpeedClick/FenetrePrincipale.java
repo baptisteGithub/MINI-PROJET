@@ -70,6 +70,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         });
         
+        // Bouton pour afficher les scores
+        boutonAfficherScores.setText("Scores");
+        add(boutonAfficherScores, BorderLayout.CENTER);
+
+        boutonAfficherScores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Affiche la fenêtre des scores
+                afficherScores();
+            }
+        });
+
+        
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 JButton bouton_cellule = new JButton();
@@ -190,6 +203,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // Ferme la fenêtre actuelle
         this.dispose();
     }
+    
+    private void afficherScores() {
+        
+        // Affiche la fenêtre des scores
+        new FenetreScores().setVisible(true);
+        this.dispose();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -205,6 +226,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         labelScore = new javax.swing.JLabel();
         boutonNouvellePartie = new javax.swing.JButton();
         boutonRetourAccueil = new javax.swing.JButton();
+        boutonAfficherScores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -238,6 +260,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         boutonRetourAccueil.setText("jButton1");
 
+        boutonAfficherScores.setText("jButton1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -255,9 +279,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boutonAfficherScores))
                             .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(102, Short.MAX_VALUE))))
+                        .addContainerGap(28, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +299,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boutonAfficherScores, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -318,6 +345,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel GrilleBoutons;
+    private javax.swing.JButton boutonAfficherScores;
     private javax.swing.JButton boutonNouvellePartie;
     private javax.swing.JButton boutonRetourAccueil;
     private javax.swing.JLabel labelChrono;
