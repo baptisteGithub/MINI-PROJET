@@ -47,7 +47,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         // Bouton pour recommencer une nouvelle partie
         
-        boutonNouvellePartie.setText("Nouvelle Partie");
+        boutonNouvellePartie.setText("Nouvelle \n Partie");
         add(boutonNouvellePartie, BorderLayout.NORTH);
 
         boutonNouvellePartie.addActionListener(new ActionListener() {
@@ -55,6 +55,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Réinitialise le jeu
                 reinitialiserPartie();
+            }
+        });
+        
+        // Bouton pour retourner à l'accueil
+        boutonRetourAccueil.setText("Accueil"); 
+        add(boutonRetourAccueil, BorderLayout.WEST);
+
+        boutonRetourAccueil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Retourne à la fenêtre d'accueil
+                retournerAccueil();
             }
         });
         
@@ -169,6 +181,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         colorierBoutonAleatoire();
         
     }
+    
+    private void retournerAccueil() {
+        // Crée une nouvelle instance de la fenêtre d'accueil
+        //FenetreAccueil fenetreAccueil = new FenetreAccueil();
+        // Affiche la fenêtre d'accueil
+        new FenetreAccueil().setVisible(true);
+        // Ferme la fenêtre actuelle
+        this.dispose();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -183,6 +204,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         labelChrono = new javax.swing.JLabel();
         labelScore = new javax.swing.JLabel();
         boutonNouvellePartie = new javax.swing.JButton();
+        boutonRetourAccueil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -214,6 +236,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         boutonNouvellePartie.setText("jButton1");
 
+        boutonRetourAccueil.setText("jButton1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -226,13 +250,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(102, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -247,7 +271,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -293,6 +319,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel GrilleBoutons;
     private javax.swing.JButton boutonNouvellePartie;
+    private javax.swing.JButton boutonRetourAccueil;
     private javax.swing.JLabel labelChrono;
     private javax.swing.JLabel labelScore;
     // End of variables declaration//GEN-END:variables

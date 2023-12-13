@@ -59,13 +59,20 @@ public class FenetreAccueil extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Le code ici sera exécuté lorsque le bouton est cliqué
+                
                 new FenetrePrincipale().setVisible(true);
+                fermerFenetre();
 
             }
         });
 
         setVisible(true);
 
+    }
+    
+    private void fermerFenetre() {
+        // Ferme la fenêtre actuelle
+        this.dispose();
     }
 
     /**
