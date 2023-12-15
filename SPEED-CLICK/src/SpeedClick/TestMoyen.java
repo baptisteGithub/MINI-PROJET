@@ -14,16 +14,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
  *
  * @author bapti
  */
-public class FenetrePrincipale extends javax.swing.JFrame {
 
+public class TestMoyen extends javax.swing.JFrame {  
     private ArrayList<JButton> boutons = new ArrayList<>();
+    private List<JButton> boutonsVertsActifs = new ArrayList<>();
     private Timer timer;
     private int secondsLeft = 10;
     private int score = 0;
@@ -33,7 +34,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     /**
      * Creates new form GrilleBoutons
      */
-    public FenetrePrincipale() {
+    public TestMoyen() {
         initComponents();
         int nbLignes = 5;
         int nbColonnes = 5;
@@ -111,22 +112,48 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         } else {
                             decrementerScore();
                         }
-                        
-                        // Rétablit la couleur normale du bouton cliqué
                         source.setBackground(null);
+                        
+                        colorierBoutonsSiEteint();
+                        // Rétablit la couleur normale du bouton cliqué
+                        //if (boutonsVertsActifs.contains(source)) {
+                         //   boutonsVertsActifs.remove(source);
+                         //   source.setBackground(null);
+
+                            // Si tous les boutons verts ont été éteints, en générer de nouveaux
+                        //    if (boutonsVertsActifs.isEmpty()) {
+                        //        colorierBoutonsAleatoires();
+                        //    }
+                        //} 
                         
                         
 
-                        // Choisi aléatoirement un autre bouton pour le colorier en vert
-                        colorierBoutonAleatoire();
+                     
                     }
                 });
             }
         }
 
         // Initialisation du premier bouton vert
-        colorierBoutonAleatoire();
+        colorierBoutonsAleatoires();
     }
+    
+    private boolean tousLesBoutonsEteints() {
+    for (JButton bouton : boutons) {
+        if (bouton.getBackground() != null) {
+            // Le bouton a une couleur de fond, ce n'est pas éteint
+            return false;
+        }
+    }
+    // Aucun bouton n'a de couleur de fond, tous les boutons sont éteints
+    return true;
+}
+    private void colorierBoutonsSiEteint() {
+    // Vérifie si tous les boutons sont éteints
+    if (tousLesBoutonsEteints()==true) {
+        colorierBoutonsAleatoires();
+    } 
+}
 
     private void lancerChronometre() {
         timer = new Timer(1000, new ActionListener() {
@@ -157,12 +184,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // Lance le chronomètre
         timer.start();
     }
-
+private void colorierBoutonsAleatoires() {
+        Random rand = new Random();
+        int nombreBoutonsVerts = rand.nextInt(4) + 1; // entre 1 et 4 boutons verts
+        for (int i = 0; i < nombreBoutonsVerts; i++) {
+            colorierBoutonAleatoire();
+        }
+    }
     private void colorierBoutonAleatoire() {
         // Rétablit la couleur normale de tous les boutons
-        for (JButton bouton : boutons) {
-            bouton.setBackground(null);
-        }
+        //for (JButton bouton : boutons) {
+         //   bouton.setBackground(null);
+        //}
 
         // Choisi aléatoirement un bouton et le colorie en vert
         Random rand = new Random();
@@ -221,6 +254,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.dispose();
     }
 
+    /**
+     * Creates new form NiveauMoyen
+     */
+    //public NiveauMoyen() {
+     //   initComponents();
+    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -239,79 +278,74 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         boutonAfficherScores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 255, 255));
-        setBounds(new java.awt.Rectangle(450, 220, 500, 500));
-        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(5, 5));
-        setSize(new java.awt.Dimension(500, 300));
-
-        GrilleBoutons.setPreferredSize(new java.awt.Dimension(400, 400));
 
         javax.swing.GroupLayout GrilleBoutonsLayout = new javax.swing.GroupLayout(GrilleBoutons);
         GrilleBoutons.setLayout(GrilleBoutonsLayout);
         GrilleBoutonsLayout.setHorizontalGroup(
             GrilleBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 237, Short.MAX_VALUE)
         );
         GrilleBoutonsLayout.setVerticalGroup(
             GrilleBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGap(0, 284, Short.MAX_VALUE)
         );
 
-        labelChrono.setFont(new java.awt.Font("Felix Titling", 1, 12)); // NOI18N
-        labelChrono.setText("labelChrono");
+        labelChrono.setText("jLabel1");
 
-        labelScore.setBackground(new java.awt.Color(255, 255, 0));
-        labelScore.setFont(new java.awt.Font("Algerian", 0, 12)); // NOI18N
-        labelScore.setForeground(new java.awt.Color(255, 0, 204));
-        labelScore.setText("labelScore");
+        labelScore.setText("jLabel1");
 
         boutonNouvellePartie.setText("jButton1");
 
-        boutonRetourAccueil.setText("jButton1");
+        boutonRetourAccueil.setText("jButton2");
 
-        boutonAfficherScores.setText("jButton1");
+        boutonAfficherScores.setText("jButton3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(boutonAfficherScores)
+                            .addComponent(boutonRetourAccueil))
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(boutonNouvellePartie)
+                        .addGap(213, 213, 213))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boutonAfficherScores))
-                            .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(28, Short.MAX_VALUE))))
+                            .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(labelChrono)
+                .addGap(41, 41, 41)
+                .addComponent(labelScore)
+                .addGap(74, 74, 74)
+                .addComponent(boutonRetourAccueil)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(boutonNouvellePartie)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(boutonAfficherScores)
+                        .addGap(60, 60, 60))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boutonAfficherScores, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
         );
 
         pack();
@@ -334,13 +368,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMoyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMoyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMoyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMoyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -348,7 +382,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetreAccueil().setVisible(true);
+                new TestMoyen().setVisible(true);
             }
         });
     }

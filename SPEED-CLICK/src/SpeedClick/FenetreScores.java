@@ -12,7 +12,10 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import java.util.List;
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
 /**
  *
  * @author bapti
@@ -46,6 +49,7 @@ public class FenetreScores extends javax.swing.JFrame {
     }
     
 /**public FenetreScores(List<Integer> scores) {
+        
         initComponents(scores);
         setSize(800, 500);
         setLocationRelativeTo(null);
@@ -74,6 +78,7 @@ public class FenetreScores extends javax.swing.JFrame {
         add(panel);
     }
     */
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
