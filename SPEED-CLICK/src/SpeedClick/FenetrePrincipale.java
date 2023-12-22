@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -28,8 +29,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private ArrayList<JButton> boutons = new ArrayList<>();
     private Timer timer;
     private int secondsLeft = 10;
-    private int score = 0;
+    private int score;
+    private Date date;
    
+    private List<FenetreScores> historiqueScores = new ArrayList<>();
     private List<Integer> scores = new ArrayList<>();
  
     /**
@@ -225,7 +228,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         new FenetreScores().setVisible(true);
         this.dispose();
     }
-
+    
+    public void ajouterScore(int score) {
+    FenetreScores nouveauScore = new FenetreScores (score, new Date());
+    historiqueScores.add(nouveauScore);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

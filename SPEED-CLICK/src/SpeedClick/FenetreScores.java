@@ -15,13 +15,22 @@ import javax.swing.JPanel;
 import java.util.List;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Date;
 import java.util.List;
 /**
  *
  * @author bapti
  */
-public class FenetreScores extends javax.swing.JFrame {
 
+public class FenetreScores extends javax.swing.JFrame {
+    private int score;
+    private Date date;
+    
+    
+    public FenetreScores (int score, Date date) {
+        this.score = score;
+        this.date = date;
+    }
     /**
      * Creates new form FenetreScores
      */
@@ -32,8 +41,7 @@ public class FenetreScores extends javax.swing.JFrame {
         
         
         boutonRetour.setText("Jouer");
-        
-
+       
         boutonRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
