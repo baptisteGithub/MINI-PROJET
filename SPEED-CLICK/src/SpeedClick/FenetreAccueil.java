@@ -74,6 +74,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         // Ajoute un bouton cliquable
         JButton bouton = new JButton("COMMENCER");
         bouton.setBounds(290, 335, 150, 30);
+        bouton.setFont(new Font("Rockwell Extra Bold", Font.PLAIN,12));
         layeredPane.add(bouton, Integer.valueOf(2));  // Ajoute à la couche au-dessus du texte
         bouton.addActionListener(new ActionListener() {
             @Override

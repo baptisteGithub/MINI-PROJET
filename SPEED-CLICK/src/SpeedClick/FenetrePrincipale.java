@@ -108,7 +108,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         
                         
                         // Vérifie si le bouton cliqué est vert
-                        if (source.getBackground() == Color.GREEN) {
+                        if (source.getBackground() == Color.ORANGE) {
                             incrementerScore();
                         } else {
                             decrementerScore();
@@ -169,8 +169,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // Choisi aléatoirement un bouton et le colorie en vert
         Random rand = new Random();
         int index = rand.nextInt(boutons.size());
-        JButton boutonVert = boutons.get(index);
-        boutonVert.setBackground(Color.GREEN);
+        JButton boutonOrange = boutons.get(index);
+        boutonOrange.setBackground(Color.ORANGE);
     }
     private void desactiverBoutons() {
         // Désactive tous les boutons
@@ -242,6 +242,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         boutonNouvellePartie = new javax.swing.JButton();
         boutonRetourAccueil = new javax.swing.JButton();
         boutonAfficherScores = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -264,20 +265,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 332, Short.MAX_VALUE)
         );
 
-        labelChrono.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        labelChrono.setForeground(new java.awt.Color(255, 153, 0));
+        labelChrono.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 12)); // NOI18N
+        labelChrono.setForeground(new java.awt.Color(255, 102, 0));
         labelChrono.setText("labelChrono");
 
         labelScore.setBackground(new java.awt.Color(255, 255, 0));
-        labelScore.setFont(new java.awt.Font("Stencil", 0, 24)); // NOI18N
-        labelScore.setForeground(new java.awt.Color(255, 153, 0));
+        labelScore.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
+        labelScore.setForeground(new java.awt.Color(255, 102, 0));
         labelScore.setText("labelScore");
 
+        boutonNouvellePartie.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 12)); // NOI18N
         boutonNouvellePartie.setText("jButton1");
 
+        boutonRetourAccueil.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 12)); // NOI18N
         boutonRetourAccueil.setText("jButton1");
 
+        boutonAfficherScores.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 12)); // NOI18N
         boutonAfficherScores.setText("jButton1");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SpeedClick/Speedy_Gonzales.svg.png"))); // NOI18N
+        jLabel1.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,16 +295,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
-                .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(boutonRetourAccueil)
-                .addGap(24, 24, 24)
-                .addComponent(boutonAfficherScores)
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(labelScore)))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(boutonRetourAccueil)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(boutonAfficherScores))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,12 +319,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(GrilleBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelChrono, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(23, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(boutonNouvellePartie, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boutonRetourAccueil, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,6 +377,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton boutonAfficherScores;
     private javax.swing.JButton boutonNouvellePartie;
     private javax.swing.JButton boutonRetourAccueil;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelChrono;
     private javax.swing.JLabel labelScore;
     // End of variables declaration//GEN-END:variables
