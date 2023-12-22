@@ -4,17 +4,22 @@
  */
 package SpeedClick;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -29,7 +34,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         initComponents();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 500);
+        setSize(730, 450);
         setLocationRelativeTo(null);
 
         // Crée un JLayeredPane pour gérer les couches
@@ -38,28 +43,42 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         // Ajoute l'image de fond en tant que JLabel
         ImageIcon imageFond = new ImageIcon("C:\\Users\\bapti\\Documents2\\2A\\CPO_MINI_PROJET2\\SPEED-CLICK\\src\\SpeedClick\\Image1.jpg");
-        Image image = imageFond.getImage().getScaledInstance(800, 500, Image.SCALE_SMOOTH);
+        Image image = imageFond.getImage().getScaledInstance(730, 450, Image.SCALE_SMOOTH);
         ImageIcon imageFondScaled = new ImageIcon(image);
-        JLabel labelFond = new JLabel(imageFond);
-        labelFond.setBounds(0, 0, 800, 500);
+        JLabel labelFond = new JLabel(imageFondScaled);
+        labelFond.setBounds(0, 0, 730, 450);
         layeredPane.add(labelFond, Integer.valueOf(0));  // Ajoute à la couche de fond
 
         // Ajoute un JLabel pour le texte
-        JLabel labelTexte = new JLabel("BIENVENUE SUR SPEEDY GONZALEZ CLICK");
+        /*JLabel labelTexte = new JLabel("BIENVENUE SUR SPEEDY GONZALEZ CLICK");
         labelTexte.setForeground(Color.RED);  // Couleur du texte
         labelTexte.setFont(new Font("Arial", Font.BOLD, 24));  // Style et taille de police
-        labelTexte.setBounds(50, 50, 600, 50);  // Position et taille du label
-        layeredPane.add(labelTexte, Integer.valueOf(1));  // Ajoute à la couche au-dessus du fond
+        labelTexte.setBounds(50, 75, 550, 50);  // Position et taille du label
+        layeredPane.add(labelTexte, Integer.valueOf(1));  // Ajoute à la couche au-dessus du fond*/   
+        
+        try {
+            Font looneyFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\bapti\\Documents2\\2A\\CPO_MINI_PROJET2\\SPEED-CLICK\\src\\SpeedClick\\LOONEYFONT2.ttf"));
+            
+            // Applique la police au label
+            JLabel labelTexte = new JLabel("BIENVENUE SUR SPEEDY GONZALEZ CLICK");
+            labelTexte.setForeground(Color.WHITE);
+            labelTexte.setFont(looneyFont.deriveFont(Font.BOLD, 24));
+            labelTexte.setHorizontalAlignment(JLabel.CENTER);
+            labelTexte.setBounds(50,75,600,50);
+            layeredPane.add(labelTexte, Integer.valueOf(1));
+        
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
 
         // Ajoute un bouton cliquable
-        JButton bouton = new JButton("Cliquez-moi !");
-        bouton.setBounds(100, 100, 150, 30);
+        JButton bouton = new JButton("COMMENCER");
+        bouton.setBounds(290, 335, 150, 30);
         layeredPane.add(bouton, Integer.valueOf(2));  // Ajoute à la couche au-dessus du texte
         bouton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Le code ici sera exécuté lorsque le bouton est cliqué
-                
+             
                 new FenetrePrincipale().setVisible(true);
                 fermerFenetre();
 
@@ -87,6 +106,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(450, 220, 500, 500));
         setPreferredSize(new java.awt.Dimension(730, 415));
+        setResizable(false);
         setSize(new java.awt.Dimension(500, 300));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

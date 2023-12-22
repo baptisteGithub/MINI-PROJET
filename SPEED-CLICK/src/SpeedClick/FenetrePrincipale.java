@@ -243,6 +243,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(450, 220, 500, 500));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(5, 5));
+        setResizable(false);
         setSize(new java.awt.Dimension(500, 300));
 
         GrilleBoutons.setPreferredSize(new java.awt.Dimension(400, 400));
