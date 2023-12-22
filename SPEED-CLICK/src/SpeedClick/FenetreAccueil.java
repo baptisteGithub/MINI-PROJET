@@ -42,7 +42,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         setContentPane(layeredPane);
 
         // Ajoute l'image de fond en tant que JLabel
-        ImageIcon imageFond = new ImageIcon("C:\\Users\\bapti\\Documents2\\2A\\CPO_MINI_PROJET2\\SPEED-CLICK\\src\\SpeedClick\\Image1.jpg");
+        ImageIcon imageFond = new ImageIcon("src/SpeedClick/Image1.jpg");
         Image image = imageFond.getImage().getScaledInstance(730, 450, Image.SCALE_SMOOTH);
         ImageIcon imageFondScaled = new ImageIcon(image);
         JLabel labelFond = new JLabel(imageFondScaled);
@@ -57,7 +57,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         layeredPane.add(labelTexte, Integer.valueOf(1));  // Ajoute à la couche au-dessus du fond*/   
         
         try {
-            Font looneyFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\bapti\\Documents2\\2A\\CPO_MINI_PROJET2\\SPEED-CLICK\\src\\SpeedClick\\LOONEYFONT2.ttf"));
+            Font looneyFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/SpeedClick/LOONEYFONT2.ttf"));
             
             // Applique la police au label
             JLabel labelTexte = new JLabel("BIENVENUE SUR SPEEDY GONZALEZ CLICK");
