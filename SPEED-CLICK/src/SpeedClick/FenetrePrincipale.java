@@ -78,7 +78,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         
         // Bouton pour afficher les scores
-        boutonAfficherScores.setText("Scores");
+        boutonAfficherScores.setText("Règles");
         add(boutonAfficherScores, BorderLayout.CENTER);
 
         boutonAfficherScores.addActionListener(new ActionListener() {

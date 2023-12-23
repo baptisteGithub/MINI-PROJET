@@ -36,11 +36,12 @@ public class FenetreScores extends javax.swing.JFrame {
      */
     public FenetreScores() {
         initComponents();
-        setSize(800, 500);
+        setSize(665, 490);
         setLocationRelativeTo(null);
         
         
         boutonRetour.setText("Jouer");
+        
        
         boutonRetour.addActionListener(new ActionListener() {
             @Override
@@ -98,27 +99,25 @@ public class FenetreScores extends javax.swing.JFrame {
     private void initComponents() {
 
         boutonRetour = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(650, 490));
+        setPreferredSize(new java.awt.Dimension(630, 512));
+        setResizable(false);
+        setSize(new java.awt.Dimension(650, 440));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        boutonRetour.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 12)); // NOI18N
         boutonRetour.setText("jButton1");
+        getContentPane().add(boutonRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(295, 295, 295)
-                .addComponent(boutonRetour)
-                .addContainerGap(307, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(221, Short.MAX_VALUE)
-                .addComponent(boutonRetour)
-                .addGap(171, 171, 171))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SpeedClick/REGLES.png"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(650, 450));
+        jLabel1.setMinimumSize(new java.awt.Dimension(650, 450));
+        jLabel1.setName(""); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(650, 450));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,5 +159,6 @@ public class FenetreScores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boutonRetour;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
